@@ -1,107 +1,139 @@
-const test = document.querySelector('.test')
+const gallery = document.querySelector('.gallery')
 const objs = document.querySelector('.objets')
 const appart = document.querySelector('.appartements')
+const hotel = document.querySelector('.hotel-resto')
+const tous = document.querySelector('.tous')
 
-fetch("http://localhost:5678/api/works")
-.then(reponse => reponse.json())
-.then(donnees =>{
+
+
+async function attenteReponse (){
+
+    return await fetch("http://localhost:5678/api/works").then(reponse => reponse.json())
+
+}
+
+console.log(attenteReponse());
+ 
+attenteReponse().then(donnees =>{
         
         let data = donnees
 
-        for(let i = 0; i < data.length; i++){
-            let image = document.createElement('img');
-            let title = document.createElement('h3');
-            let article = document.createElement('article');
+        tous.addEventListener('click', ()=>{
+            function allPhotos (){
+                for(let i = 0; i < data.length; i++){
+                let image = document.createElement('img');
+                let title = document.createElement('figcaption');
+                let figure = document.createElement('figure');
 
-            image.src = data[i].imageUrl;
-            title.innerText = data[i].title;
+                image.src = data[i].imageUrl;
+                title.innerText = data[i].title;
 
-            article.appendChild(image);
-            article.appendChild(title);
-            test.appendChild(article);
+                figure.appendChild(image);
+                figure.appendChild(title);
+                gallery.appendChild(figure);
             
-        }
-
-        console.log(data)
-
-
-
-        objs.addEventListener('click', ()=>{
-            test.innerHTML = ""
-
-            function appleObj(){
-
-                const imgObj = data.map(obg => obg.category.name)
-
-                        for(let i = imgObj.length -1; i >= 0; i--){
-                            if(data[i].category.name !== 'Objets'){
-                            data.splice(i,1)
-                            }
-                        }
-                        
-                        for(let i = 0; i < imgObj.length; i++){
-
-                            let imgBox = document.createElement('img')
-                            let titleImg = document.createElement('h3')
-                            let articleObj = document.createElement('article')
-
-                            imgBox.src = data[i].imageUrl
-                            titleImg.innerText = data[i].title
-
-                            articleObj.appendChild(imgBox)
-                            articleObj.appendChild(titleImg)
-                            
-                            test.appendChild(articleObj)
-                            console.log(imgBox)
-
-                        }                      
                 }
-                test.innerHTML = appleObj()     
- })
-    
-        
-
-        appart.addEventListener('click', ()=>{
-
-            test.innerHTML = "";
+            }
             
-            function appelAppart(){
-
-
-
-          
-
-                const appartValue = data.map(app => app.category.name)
-
-                    for(let i = appartValue.length -1; i >= 0; i--){
-                        if(data[i].category.name !== 'Appartements'){
-                            data.splice(i,1) 
-                        }           
-                    }
-
-                    for(let i = 0; i < appartValue.length; i++){
-                            let imgAppart = document.createElement('img')
-                            let titleAppart = document.createElement('h3')
-                            let articleAppart = document.createElement('article')
-
-                            imgAppart.src = data[i].imageUrl
-                            titleAppart.innerText = data[i].title
-
-                            articleAppart.appendChild(imgAppart)
-                            articleAppart.appendChild(titleAppart)
-
-                            test.appendChild(articleAppart)
-                    }
-
-                }            
-                test.innerHTML = appelAppart()
+            gallery.innerHTML = ""
+            allPhotos()
 
         })
 
 
+        objs.addEventListener('click', ()=>{
+             
+            function appelObj(){ 
+
+                const imgObj = data.filter(function (dt){
+                    return dt.category.name == 'Objets';
+                })   
+
+                for(let i = 0; i < imgObj.length; i++){
+
+                    let imgBox = document.createElement('img')
+                    let titleImg = document.createElement('figcaption')
+                    let figureObj = document.createElement('figure')
+
+                    imgBox.src = imgObj[i].imageUrl
+                    titleImg.innerText = imgObj[i].title
+
+                    figureObj.appendChild(imgBox)
+                    figureObj.appendChild(titleImg)
+                    
+                    gallery.appendChild(figureObj)
+
+                }     
+
+            }
+            gallery.innerHTML = ""  
+            appelObj()     
+
+        })
 
 
+        appart.addEventListener('click', ()=>{
+
+            function appelAppart(){      
+
+                const appartValue = data.filter(function(dt){
+                  
+                   return dt.category.name == 'Appartements'
+                })
+            
+                for(let i = 0; i < appartValue.length; i++){
+                        let imgAppart = document.createElement('img')
+                        let titleAppart = document.createElement('figcaption')
+                        let figureAppart = document.createElement('figure')
+
+                        imgAppart.src = appartValue[i].imageUrl
+                        titleAppart.innerText = appartValue[i].title
+
+                        figureAppart.appendChild(imgAppart)
+                        figureAppart.appendChild(titleAppart)
+
+                        gallery.appendChild(figureAppart)
+                        console.log(gallery)
+
+                }
+
+                }      
+                 gallery.innerHTML = ""
+                 appelAppart()
+            }
+            
+        )
 
 
+        hotel.addEventListener('click', ()=>{
+
+            function HotelAndRestaurant (){
+                const resto = data.filter(function(dt){
+                    return dt.category.name == "Hotels & restaurants"
+                })
+
+                for(let i = 0; i < resto.length; i++){
+                    imgResto = document.createElement('img')
+                    titleResto = document.createElement('figcaption')
+                    figureResto = document.createElement('figure')
+
+                    imgResto.src = resto[i].imageUrl
+                    titleResto.innerText = resto[i].title
+
+                    figureResto.appendChild(imgResto)
+                    figureResto.appendChild(titleResto)
+
+                    gallery.appendChild(figureResto)
+
+                    
+                }
+                
+                
+            }
+
+             gallery.innerHTML = ""
+             HotelAndRestaurant()
+        })
 
 })
+   
