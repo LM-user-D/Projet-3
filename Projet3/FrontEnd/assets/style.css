@@ -95,6 +95,18 @@ nav li {
 	font-size: 1.2em;
 }
 
+/*** style du lien Login***/
+
+nav a{
+	color: #333;
+	text-decoration: none;
+}
+
+
+
+
+
+
 li:hover {
 	color: #B1663C;
 }
@@ -125,15 +137,6 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -175,22 +178,6 @@ li:hover {
 
 
 /*lien filtre*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -267,3 +254,284 @@ article img{
 	width: 100%;
 	height: 100%;
 }
+
+
+/*** page de login ***/
+.login{
+	width: 100%;
+	height: 70vh;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-direction: column;
+	text-align: center;
+	gap: 50px;
+}
+#form{
+	width: 100%;
+	height: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 10px;
+}
+#form label{
+	margin-top: 15px;
+	width: 350px;
+	text-align: start;
+}	
+
+#form input{
+	border: none;
+	outline: none;
+	width: 350px;
+	padding: 15px 0px;
+	font-size:  15px;
+	box-shadow: 0px 4px 20px  #33333328;
+}
+
+#email:placeholder-shown, #password:placeholder-shown{
+	color: red;
+	font-weight: 800;
+}
+
+
+#form #connection{
+	width: 250px;
+	padding: 15px;
+	background-color: #1D6154;
+	border-radius: 25px;
+	letter-spacing: 1px;
+	color: #fff;
+	margin-top: 20px;
+	font-size: 16px;
+	font-family: 'Syne';
+}
+
+
+.login a {
+	color: #333;
+}
+/*** page de login ***/
+
+
+
+/*** lien vers la modale ***/
+
+
+
+.content-lien-modale {
+	display: flex;
+	justify-content: center;
+}
+
+
+.content-lien-modale a{
+	text-decoration: none;
+	color: #333;
+	margin: 10px 20px;
+}
+
+
+
+
+
+
+
+/*** modale 1 ***/
+
+.modale{
+	position: fixed;
+	margin: 0;
+	top: 0px;
+	left: 0px;
+	background-color: rgba(0,0,0,0.5);
+	width: 100%;
+	height: 100vh;
+	display: none;
+}
+
+
+.content-modale1{
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 630px;
+	height: 740px;
+	background-color: #fff;
+	border-radius: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+
+
+.content-modale1 h3{
+	margin-bottom: 40px;
+	font-size: 30px;
+
+}
+
+.btn-modale1{
+	position: absolute;
+	top: 22px;
+	right: 22px;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	background-color: #fff;
+}
+
+.content-img{
+	width: 500px;
+	height: 530px;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(3, 130px);
+	gap: 30px 10px;
+
+}
+
+.content-img .article-modale{
+	position: relative;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+.article-modale img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+
+.content-modale1 span{
+	align-self: center;
+	width: 500px;
+	height: 2px;
+	background-color: #B3B3B3
+}
+
+.btn-ajouter{
+	width: 260px;
+	padding: 15px;
+	background-color: #1D6154;
+	border-radius: 25px;
+	letter-spacing: 1px;
+	color: #fff;
+	margin-top: 20px;
+	font-size: 14px;
+	font-family: 'Syne';
+}
+
+
+
+.article-modale .span-trash{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 13px;
+	height: 15px;
+	padding: 5px 7px;
+	background-color: black;
+	border-radius: 4px;
+	transition: all 0.3s;
+
+}
+.span-trash:hover{
+	transform: translateY(-2px);
+}
+
+.span-trash:active{
+	transform: translateY(2px);
+}
+
+.span-trash img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+
+/*** modale 1 ***/
+
+
+
+
+/*** modale 2 ***/
+.modale2{
+	display: block;
+}
+.content-modale2{
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 630px;
+	height: 680px;
+	background-color: #fff;
+	border-radius: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+}
+
+.btn-modale2{
+	position: absolute;
+	top: 22px;
+	right: 22px;
+}
+
+
+.ajout-photo{
+	width: 500px;
+	height: 200px;
+	background-color: #E8F1F6;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.boximg{
+	width: 90px;
+	height: 90px;
+
+}
+
+.boximg img{
+	width: 100%;
+	height: 100%;
+}
+
+.form-ajouter{
+	width: 500px;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.form-ajouter label{
+	width: 160px;
+	text-align: start;
+	margin: 10px;
+}
+
+
+.ajout-photo .obj{
+	width: 50px;
+	height: 50px;
+
+
+}
+
+/*** modale 2 ***/

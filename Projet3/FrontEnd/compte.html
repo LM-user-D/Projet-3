@@ -17,9 +17,8 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<!---   lien vers la page de login -->
-			<a href="pageLogin.html"><li>login</li></a>
-
+			<a href="index.html"><li>logout</li></a>
+			
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -37,16 +36,114 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		
 
-		<div class="filtre">
-				<button class="filtre-btn tous">Tous</button>
-				<button class="filtre-btn objets">Objets</button>
-				<button class="filtre-btn appartements">Appartements</button>
-				<button class="filtre-btn hotel-resto">Hôtels & restaurants</button>
+        <!--  lein vers la modale -->
+		<div class="content-lien-modale">
+            <h2>Mes Projets</h2>
+            <a href="#" class="lien-modale1"><img src="Vector (1).svg" alt=""> modifier</a>
+
 		</div>
+        <!--  lein vers la modale -->
 
-	<div class="gallery">
+
+		<!---  modale 1-->
+
+		<section class="modale modale1">
+			<div class="content-modale1">
+		
+				<button class="btn-modale1">X</button>
+				<h3>Galerie photo</h3>
+		
+				<div class="content-img">
+				
+				</div>
+				<span></span>
+		
+				<button class="btn-ajouter">Ajouter une photo</button>
+			</div>
+		
+		</section>
+
+
+		<!---  modale 1-->
+
+
+
+		<!---  modale 2-->
+
+		<section class="modale modale2">
+			<div class="content-modale2">
+		
+				<button class="btn-modale2">X</button>
+				<button class="btn-modale2">fleche</button>
+				<h3>Ajout photo</h3>
+		
+				<div class="ajout-photo">
+					
+					<div class="boximg">
+						<img src="Vector.svg" alt="">
+					</div>	
+
+					<input type="file" id="inpFile" style="display: none;">
+					<button class="btn-inp">+ Ajouter photo</button>
+					<p class="size-img">jpn, png: 4mo max</p>
+
+				</div>
+
+
+
+
+
+		<!---  formulaire -->
+				
+				<form  class="form-ajouter" action="">
+					<label for="inpTitel">Titre</label>
+					<input type="text" name="" id="inpTitel">
+
+					<label for="selection">Catégorie</label>
+					<select class="selection" id="selection">
+						<option value="objets">Objets</option>
+						<option value="appartements">Appartement</option>
+						<option value="hotelresto">Hôtel & restaurants</option>
+					</select>
+
+				</form>
+		<!---  formulaire -->
+
+
+
+				<span></span>
+		
+				<button class="btn-ajouter">Valider</button>
+			</div>
+		
+		</section>
+
+
+
+		<!---  modale 2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<div class="gallery">
 			<figure>
 				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
 				<figcaption>Abajour Tahina</figcaption>
@@ -110,6 +207,43 @@
 
 
 </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <footer>
