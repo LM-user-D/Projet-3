@@ -59,7 +59,6 @@
 				
 				</div>
 				<span></span>
-		
 				<button class="btn-ajouter">Ajouter une photo</button>
 			</div>
 		
@@ -78,44 +77,39 @@
 				<button class="btn-modale2">X</button>
 				<button class="btn-modale2">fleche</button>
 				<h3>Ajout photo</h3>
-		
+
 				<div class="ajout-photo">
 					
 					<div class="boximg">
 						<img src="Vector.svg" alt="">
 					</div>	
 
-					<input type="file" id="inpFile" style="display: none;">
+					<input type="file" id="inpFile"  name="inpFile"  style="display: none;">
 					<button class="btn-inp">+ Ajouter photo</button>
 					<p class="size-img">jpn, png: 4mo max</p>
 
 				</div>
 
-
-
-
-
 		<!---  formulaire -->
-				
-				<form  class="form-ajouter" action="">
+			<form id="form-ajouter" action="submit">
+		
 					<label for="inpTitel">Titre</label>
-					<input type="text" name="" id="inpTitel">
+					<input type="text" name="titleImg" id="inpTitel">
 
 					<label for="selection">Catégorie</label>
-					<select class="selection" id="selection">
-						<option value="objets">Objets</option>
-						<option value="appartements">Appartement</option>
-						<option value="hotelresto">Hôtel & restaurants</option>
+					<select class="selection" id="selection" name="select">
+						<option value="Objets">Objets</option>
+						<option value="Appartements">Appartement</option>
+						<option value="Hotel & restaurants">Hôtel & restaurants</option>
 					</select>
+								
+					<span></span>
+					<input type="submit" value="Valider">
 
-				</form>
+					<button  class="btn-valider">Valider</button>
+			</form>
 		<!---  formulaire -->
-
-
-
-				<span></span>
-		
-				<button class="btn-ajouter">Valider</button>
+			
 			</div>
 		
 		</section>
@@ -125,23 +119,7 @@
 		<!---  modale 2-->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		
 
 		<div class="gallery">
 			<figure>
@@ -209,43 +187,6 @@
 </main>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <footer>
 	<nav>
 		<ul>
@@ -253,7 +194,6 @@
 		</ul>
 	</nav>
 </footer>
-
-<script src="app.js"></script>
+<script src="nvimg.js"></script>
 </body>
 </html>
