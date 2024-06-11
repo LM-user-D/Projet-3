@@ -1,24 +1,20 @@
 
 const gallery = document.querySelector('.gallery')
-const objs = document.querySelector('.objets')
+const objets = document.querySelector('.objets')
 const appart = document.querySelector('.appartements')
 const hotel = document.querySelector('.hotel-resto')
-const tous = document.querySelector('.tous')
+const tousLesProjets = document.querySelector('.tous')
  
-async function attenteReponse (){
-
+async function reponseProjet(){
     return await fetch("http://localhost:5678/api/works").then(reponse => reponse.json())
-
 }
 
 
-attenteReponse().then(donnees =>{
+reponseProjet().then(donnees =>{
         
         let data = donnees
 
-        console.log(data)
-
-        tous.addEventListener('click', ()=>{
+        tousLesProjets.addEventListener('click', ()=>{
             function allPhotos (){
                 for(let i = 0; i < data.length; i++){
                 let image = document.createElement('img');
@@ -41,7 +37,7 @@ attenteReponse().then(donnees =>{
         })
 
 
-        objs.addEventListener('click', ()=>{
+        objets.addEventListener('click', ()=>{
              
             function appelObj(){ 
 
@@ -51,17 +47,17 @@ attenteReponse().then(donnees =>{
 
                 for(let i = 0; i < imgObj.length; i++){
 
-                    let imgBox = document.createElement('img')
+                    let image = document.createElement('img')
                     let titleImg = document.createElement('figcaption')
-                    let figureObj = document.createElement('figure')
+                    let figure = document.createElement('figure')
 
-                    imgBox.src = imgObj[i].imageUrl
+                    image.src = imgObj[i].imageUrl
                     titleImg.innerText = imgObj[i].title
 
-                    figureObj.appendChild(imgBox)
-                    figureObj.appendChild(titleImg)
+                    figure.appendChild(image)
+                    figure.appendChild(titleImg)
                     
-                    gallery.appendChild(figureObj)
+                    gallery.appendChild(figure)
 
                 }     
 
@@ -82,17 +78,17 @@ attenteReponse().then(donnees =>{
                 })
             
                 for(let i = 0; i < appartValue.length; i++){
-                        let imgAppart = document.createElement('img')
+                        let image = document.createElement('img')
                         let titleAppart = document.createElement('figcaption')
-                        let figureAppart = document.createElement('figure')
+                        let figure = document.createElement('figure')
 
-                        imgAppart.src = appartValue[i].imageUrl
+                        image.src = appartValue[i].imageUrl
                         titleAppart.innerText = appartValue[i].title
 
-                        figureAppart.appendChild(imgAppart)
-                        figureAppart.appendChild(titleAppart)
+                        figure.appendChild(image)
+                        figure.appendChild(titleAppart)
 
-                        gallery.appendChild(figureAppart)
+                        gallery.appendChild(figure)
                         console.log(gallery)
 
                 }
@@ -113,17 +109,17 @@ attenteReponse().then(donnees =>{
 
                 for(let i = 0; i < resto.length; i++){
 
-                    imgResto = document.createElement('img')
+                    image = document.createElement('img')
                     titleResto = document.createElement('figcaption')
-                    figureResto = document.createElement('figure')
+                    figure = document.createElement('figure')
 
-                    imgResto.src = resto[i].imageUrl
+                    image.src = resto[i].imageUrl
                     titleResto.innerText = resto[i].title
 
-                    figureResto.appendChild(imgResto)
-                    figureResto.appendChild(titleResto)
+                    figure.appendChild(image)
+                    figure.appendChild(titleResto)
 
-                    gallery.appendChild(figureResto)
+                    gallery.appendChild(figure)
                     
                 }
                 

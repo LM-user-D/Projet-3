@@ -1,17 +1,14 @@
 const gallery = document.querySelector('.gallery')
-
-async function attenteReponse (){
+async function reponseModale (){
 
     return await fetch("http://localhost:5678/api/works").then(reponse => reponse.json())
 
 }
 
-
-attenteReponse().then(donnees =>{
+reponseModale().then(donnees =>{
         
     let data = donnees
     
-    console.log(data)
 
     gallery.innerHTML = ""
 
@@ -34,28 +31,113 @@ attenteReponse().then(donnees =>{
  
 //Partie de la modale1
 
-const lien = document.querySelector('.lien-modale1')
+const lienModale = document.querySelector('.lien-modale1')
 const modale1 = document.querySelector('.modale1')
-const btnModale1 = document.querySelector('.btn-modale1')
+const btnEchappe = document.querySelector('.btn-modale1')
 const contentImg = document.querySelector('.content-img')
 const BtnAjouterPhoto = document.querySelector('.btn-ajouter')
 const modale2 = document.querySelector('.modale2')
+const contentModale1 = document.querySelector('.content-modale1')
+const contentModale2 = document.querySelector('.content-modale2')
 
 
-btnModale1.addEventListener('click', ()=>{
+btnEchappe.addEventListener('click', ()=>{
     modale1.style.display = "none"
 })
 
-lien.addEventListener('click', ()=>{
-    modale1.style.display = 'block'
+// gestion du click en dehors de la modale
+
+modale1.addEventListener('click', ()=>{
+    modale1.style.display = "none";
+    contentModale1.style.display = "none"
 })
+
+contentModale1.addEventListener('click', (e)=>{
+    e.stopPropagation()
+
+})
+
+
+modale2.addEventListener('click', ()=>{
+    modale2.style.display = "none";
+    contentModale2.style.display = "none"
+})
+
+contentModale2.addEventListener('click', (e)=>{
+    e.stopPropagation()
+
+})
+
+
+
+
+const Elementsfocusable = 'button, a, input, select'
+let focussables1 = []
+let focussables2 = []
+
+const FocusInModale = function (e){ 
+    e.preventDefault()
+    let index = focussables1.findIndex(f => f === modale1.querySelector(':focus'))
+    index++
+    if(index >= focussables1.length){
+        index = 0
+    }
+    focussables1[index].focus()
+        
+}
+
+const  FocusInModale2 = function (e){
+    e.preventDefault()
+    let index = focussables2.findIndex(f => f === modale2.querySelector(':focus'))
+    index++
+    if(index >= focussables2.length){
+        index = 0
+    }
+    focussables2[index].focus()
+
+    console.log(focussables2, index)
+}
+
 
 BtnAjouterPhoto.addEventListener('click', ()=>{
     modale1.style.display = "none"
     modale2.style.display = "block"
+    contentModale2.style.display = 'block';
+
+    focussables2 = Array.from(modale2.querySelectorAll(Elementsfocusable))
 })
 
 
+
+lienModale.addEventListener('click', ()=>{
+    modale1.style.display = 'block';
+    contentModale1.style.display = 'block';
+    focussables1 = Array.from(modale1.querySelectorAll(Elementsfocusable))
+
+})
+//click pour sortir de la modale avec échape
+
+window.addEventListener("keydown", (e)=>{
+    if(e.key === "Escape" || e.key === "Esc"){
+        modale1.style.display = 'none'
+        modale2.style.display = 'none'
+    }
+    //gestion de la touche Tab quand la modale est ouverte
+    if(e.key === "Tab" && modale1.style.display === "block"){
+         FocusInModale(e)
+    }  
+    if(e.key === "Tab" && modale2.style.display === "block"){
+         FocusInModale2(e)
+    }  
+})
+
+
+
+
+
+
+
+// partie de la modale 1
 async function appelModale (){
    return await fetch("http://localhost:5678/api/works").then(mod => mod.json())
 }
@@ -103,9 +185,8 @@ appelModale().then(modaleImg =>{
 })
 
 
-
-/***modale 2 */
-
+// modale 2 
+/// revoir ici nom des variables 
 const inputModale2 = document.querySelector('#inpFile')
 const btnModale2 = document.querySelector('.btn-inp')
 const sizeImg = document.querySelector('.size-img')
@@ -236,9 +317,9 @@ const formulaireAjoutImg = document.getElementById('form-ajouter')
 const inpFile = document.querySelector('#inpFile')
 
     
-formulaireAjoutImg.addEventListener('submit', (e)=>{
+formulaireAjoutImg.addEventListener('submit', async(e)=>{
+    e.preventDefault()
 
-  
     const nvImg = {
         title: e.target.querySelector('#inpTitel').value,
         
@@ -247,22 +328,14 @@ formulaireAjoutImg.addEventListener('submit', (e)=>{
         imageUrl: inpFile.onload = URL.createObjectURL(inpFile.files[0])
     }
 
-
-console.log(charge)
-
-
-async function envoyer (){
-
-    e.preventDefault()
     const charge = JSON.stringify(nvImg)
     await fetch("http://localhost:5678/api/works",{
             method: "POST",
             headers: {'Content-Type' : 'application/json'},
             body: charge
         }).then(rep => rep.json)
-    }    
-
-envoyer()
+   
+        
 
     })
 

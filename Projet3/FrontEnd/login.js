@@ -1,14 +1,11 @@
 const formulaire = document.getElementById('form')
-const connection = document.getElementById('connection')
 const email = document.getElementById('email')
 const password = document.getElementById('password')
 
-
 const click = document.querySelector('.click')
-
 click.addEventListener('click', ()=>{
 
-function testRegex(){
+function regexEmail(){
 const valeurEmail = email.value 
 
 const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
@@ -21,38 +18,49 @@ const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
     }
 
 }
-testRegex()
+regexEmail()
 
 
 })
 
 
 
-/*
-
-
-
-formulaire.addEventListener('submit', (e)=>{
+formulaire.addEventListener('submit', async (e)=>{
     e.preventDefault()
- 
-    const login = {
-        userId: document.querySelector('#email').value,
-        token: document.querySelector('#password').value
+
+    const chargeUtile = {
+       "userId": email.value,
+        "token": password.value
     }
-       
-    const charge = JSON.stringify(login)
      
-    console.log(charge);
     
-         fetch('http://localhost:5678/api/users/login', 
+      const request =  await fetch('http://localhost:5678/api/users/login', 
             {
                 method: "POST",
                 headers: {'Content-Type' : 'application/json'},
-                body : charge
-            }).then(format => format.json()).then(data =>{
-                
-                
-             if(urserId !== data.userId && token !== data.token){
+                body : JSON.stringify(chargeUtile) 
+            })
+            let reponse = await request.json()
+            
+            if(reponse.message === 'user are not found'){
+                alert('Email ou mots de passe sont incorectes')
+            }
+            else{
+                window.location.assign('compte.html')
+            }
+      
+}, false)
+
+
+
+
+
+
+
+
+/*
+          
+            if(urserId !== data.userId && token !== data.token){
             alert('Erreur dans l’identifiant ou le mot de passe')
             }
 
@@ -71,16 +79,18 @@ formulaire.addEventListener('submit', (e)=>{
             }
 
 
-            })
-
-})
 
 
 
 
 
 
-/*
+
+
+
+
+
+
 connection.addEventListener('click', () =>{
   
 

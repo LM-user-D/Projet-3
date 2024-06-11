@@ -42,18 +42,16 @@
 		<div class="content-lien-modale">
             <h2>Mes Projets</h2>
             <a href="#" class="lien-modale1"><img src="Vector (1).svg" alt=""> modifier</a>
-
 		</div>
         <!--  lein vers la modale -->
 
 
 		<!---  modale 1-->
-
-		<section class="modale modale1">
+		<section class="modale modale1" aria-hidden="true" aria-labelledby="titlemodale">
 			<div class="content-modale1">
 		
 				<button class="btn-modale1">X</button>
-				<h3>Galerie photo</h3>
+				<h3 id="titlemodale">Galerie photo</h3>
 		
 				<div class="content-img">
 				
@@ -63,11 +61,7 @@
 			</div>
 		
 		</section>
-
-
 		<!---  modale 1-->
-
-
 
 		<!---  modale 2-->
 
@@ -84,14 +78,14 @@
 						<img src="Vector.svg" alt="">
 					</div>	
 
-					<input type="file" id="inpFile"  name="inpFile"  style="display: none;">
+					<input type="file" id="inpFile"  name="inpFile">
 					<button class="btn-inp">+ Ajouter photo</button>
 					<p class="size-img">jpn, png: 4mo max</p>
 
 				</div>
 
 		<!---  formulaire -->
-			<form id="form-ajouter" action="submit">
+				<form id="form-ajouter" action="submit">
 		
 					<label for="inpTitel">Titre</label>
 					<input type="text" name="titleImg" id="inpTitel">
@@ -107,7 +101,7 @@
 					<input type="submit" value="Valider">
 
 					<button  class="btn-valider">Valider</button>
-			</form>
+				</form>
 		<!---  formulaire -->
 			
 			</div>
@@ -117,9 +111,6 @@
 
 
 		<!---  modale 2-->
-
-
-		
 
 		<div class="gallery">
 			<figure>
@@ -183,9 +174,7 @@
 		</form>
 	</section>
 
-
 </main>
-
 
 <footer>
 	<nav>
