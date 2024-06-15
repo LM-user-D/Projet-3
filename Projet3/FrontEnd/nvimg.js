@@ -133,10 +133,6 @@ window.addEventListener("keydown", (e)=>{
 
 
 
-
-
-
-
 // partie de la modale 1
 async function appelModale (){
    return await fetch("http://localhost:5678/api/works").then(mod => mod.json())
@@ -316,34 +312,44 @@ const formulaireAjoutImg = document.getElementById('form-ajouter')
 
 const inpFile = document.querySelector('#inpFile')
 
-    
-formulaireAjoutImg.addEventListener('submit', async(e)=>{
+
+formulaireAjoutImg.addEventListener('submit', async function(e){
     e.preventDefault()
-
     const nvImg = {
-        title: e.target.querySelector('#inpTitel').value,
-        
-        category: {name : e.target.querySelector('select').value},
-
-        imageUrl: inpFile.onload = URL.createObjectURL(inpFile.files[0])
+        title: e.target.querySelector('#inpTitel').value, 
+        category: {name : e.target.querySelector('select').value}
     }
+    console.log(nvImg)
 
-    const charge = JSON.stringify(nvImg)
-    await fetch("http://localhost:5678/api/works",{
+    const token = localStorage.getItem('token')
+    
+    const request = await fetch("http://localhost:5678/api/works", 
+        {
             method: "POST",
-            headers: {'Content-Type' : 'application/json'},
-            body: charge
-        }).then(rep => rep.json)
-   
-        
-
+            headers : {'Content-Type': 'application/json', "Authorization": "Bearer" + token},
+            body: JSON.stringify(nvImg),
     })
+    
+     await request.json()
+
+}, false)
+
+ 
 
 
 
-  
 
-        
+fetch("http://localhost:5678/api/works").then(rep => rep.json())
+.then(data =>{
+    console.log(data)
+})
 
 
+/* 
+        A mettre dans la charge utile
+        "imageUrl": URL.createObjectURL(inpFile.files[0]) 
 
+Authorization: 'Bearer Token'
+ */
+
+ 

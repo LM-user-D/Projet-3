@@ -23,31 +23,35 @@ regexEmail()
 
 })
 
+ 
 
 
-formulaire.addEventListener('submit', async (e)=>{
+formulaire.addEventListener('submit', async function(e){
     e.preventDefault()
 
     const chargeUtile = {
-       "userId": email.value,
-        "token": password.value
-    }
-     
-    
+       "email": email.value,
+        "password": password.value
+    }   
+
       const request =  await fetch('http://localhost:5678/api/users/login', 
             {
                 method: "POST",
-                headers: {'Content-Type' : 'application/json'},
+                headers: {'Content-Type': 'application/json'},
                 body : JSON.stringify(chargeUtile) 
             })
-            let reponse = await request.json()
             
-            if(reponse.message === 'user are not found'){
-                alert('Email ou mots de passe sont incorectes')
-            }
-            else{
-                window.location.assign('compte.html')
-            }
+            let reponse = await request.json()
+            console.log(reponse)
+   
+         if(reponse.message === 'user not found'){
+            alert('Email ou Mot de passe sont incorrectes')
+         }
+         else if(reponse.userId === 1){
+            window.location.assign('compte.html')
+        } 
+         window.localStorage.setItem("token", reponse.token) 
+        
       
 }, false)
 
