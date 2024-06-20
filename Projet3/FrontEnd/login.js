@@ -1,30 +1,28 @@
 const formulaire = document.getElementById('form')
 const email = document.getElementById('email')
 const password = document.getElementById('password')
+const connetion = document.getElementById('connetion')
 
 const click = document.querySelector('.click')
-click.addEventListener('click', ()=>{
+connetion.addEventListener('click', ()=>{
 
 function regexEmail(){
 const valeurEmail = email.value 
 
-const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
+const regex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/i)
    
     if(regex.test(valeurEmail)){
         return true
     }
     else{
-        alert("entrez une adresse mail valide")
+        alert("Entrez une adresse mail valide")
     }
-
+console.log(regex)
 }
 regexEmail()
 
 
 })
-
- 
-
 
 formulaire.addEventListener('submit', async function(e){
     e.preventDefault()
@@ -42,20 +40,18 @@ formulaire.addEventListener('submit', async function(e){
             })
             
             let reponse = await request.json()
-            console.log(reponse)
+            console.table(request.status)
    
-         if(reponse.message === 'user not found'){
+         if(reponse.message === 'user not found' || request.status === 401){
             alert('Email ou Mot de passe sont incorrectes')
          }
-         else if(reponse.userId === 1){
+         
+         else if(reponse.userId === 1 && request.status !== 401){
             window.location.assign('compte.html')
         } 
          window.localStorage.setItem("token", reponse.token) 
         
-      
 }, false)
-
-
 
 
 
@@ -81,16 +77,6 @@ formulaire.addEventListener('submit', async function(e){
                 window.location.assign('compte.html')
         
             }
-
-
-
-
-
-
-
-
-
-
 
 
 

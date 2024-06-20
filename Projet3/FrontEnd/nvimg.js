@@ -1,15 +1,14 @@
+
 const gallery = document.querySelector('.gallery')
 async function reponseModale (){
 
     return await fetch("http://localhost:5678/api/works").then(reponse => reponse.json())
 
 }
-
 reponseModale().then(donnees =>{
         
     let data = donnees
     
-
     gallery.innerHTML = ""
 
             for(let i = 0; i < data.length; i++){
@@ -23,9 +22,7 @@ reponseModale().then(donnees =>{
             figure.appendChild(image);
             figure.appendChild(title);
             
-            gallery.appendChild(figure);}
-    
-            
+            gallery.appendChild(figure);}            
 
 })
  
@@ -46,7 +43,7 @@ btnEchappe.addEventListener('click', ()=>{
 })
 
 // gestion du click en dehors de la modale
-
+function gestionClickModale () {    
 modale1.addEventListener('click', ()=>{
     modale1.style.display = "none";
     contentModale1.style.display = "none"
@@ -67,9 +64,6 @@ contentModale2.addEventListener('click', (e)=>{
     e.stopPropagation()
 
 })
-
-
-
 
 const Elementsfocusable = 'button, a, input, select'
 let focussables1 = []
@@ -108,7 +102,6 @@ BtnAjouterPhoto.addEventListener('click', ()=>{
 })
 
 
-
 lienModale.addEventListener('click', ()=>{
     modale1.style.display = 'block';
     contentModale1.style.display = 'block';
@@ -131,7 +124,8 @@ window.addEventListener("keydown", (e)=>{
     }  
 })
 
-
+}
+gestionClickModale()
 
 // partie de la modale 1
 async function appelModale (){
@@ -150,6 +144,7 @@ appelModale().then(modaleImg =>{
 
             imgMod.src = dataImg[i].imageUrl
             imgcorbeille.src = 'trash-can-solid.svg' 
+            imgTrash.id = dataImg[i].id
 
             articleMod.classList.add('article-modale')
             imgTrash.classList.add('span-trash')
@@ -159,26 +154,40 @@ appelModale().then(modaleImg =>{
             articleMod.appendChild(imgMod)
             articleMod.appendChild(imgTrash)
 
-            
-            contentImg.appendChild(articleMod)
+            contentImg.appendChild(articleMod)     
 
         }
 
-        /*******delete images */
+        /*******delete images */          
 
-        const spanDelete = document.querySelectorAll('.span-trash')
 
-            spanDelete.forEach(element => {
+    let spanDelete = document.querySelectorAll('.span-trash')
+
+        spanDelete.forEach(element => {
             element.addEventListener('click', ()=>{
-                        element.parentElement.style.display = "none"
-
-                        })
-        
+                        element.parentElement.style.display = "none"  
+                        }) 
         });
+
+        spanDelete.forEach(deleleProjet =>{
+            deleleProjet.addEventListener('click', async ()=>{
+
+            const token = localStorage.getItem('token')
+
+                await fetch(`http://localhost:5678/api/works/${deleleProjet.id}`, {
+                    method: 'DELETE', 
+                    body: null,
+                    headers: {"Authorization": "Bearer " + token}
+                }) 
+            
+            })
+
+        }) 
 
         /*******delete images */          
 
 })
+
 
 
 // modale 2 
@@ -309,47 +318,46 @@ function hanleFiles(filesData){
 /***modale 2 */
 
 const formulaireAjoutImg = document.getElementById('form-ajouter')
-
 const inpFile = document.querySelector('#inpFile')
-
+const inpTitel = document.querySelector('#inpTitel')
+const selection = document.querySelector('#selection')
 
 formulaireAjoutImg.addEventListener('submit', async function(e){
+
     e.preventDefault()
-    const nvImg = {
-        title: e.target.querySelector('#inpTitel').value, 
-        category: {name : e.target.querySelector('select').value}
-    }
-    console.log(nvImg)
+
+let nvFile = inpFile.files[0]
+
+
+    let nvProjet = new FormData()
+    nvProjet.append("imageUrl", nvFile)
+    nvProjet.append("title", inpTitel.value)
+    nvProjet.append("categoryId", selection.value)
+
+    console.log(nvFile)
 
     const token = localStorage.getItem('token')
-    
+    console.log(token)
+ 
     const request = await fetch("http://localhost:5678/api/works", 
         {
             method: "POST",
-            headers : {'Content-Type': 'application/json', "Authorization": "Bearer" + token},
-            body: JSON.stringify(nvImg),
+            headers: {"Authorization": "Bearer " + token},
+            body: nvProjet
     })
     
-     await request.json()
-
+    let reponse = await request.json()
+        console.log(reponse)
+ 
 }, false)
 
- 
 
-
-
-
-fetch("http://localhost:5678/api/works").then(rep => rep.json())
-.then(data =>{
-    console.log(data)
+fetch("http://localhost:5678/api/works").then(rep => rep.json()).then(dd => {
+    console.log(dd)
 })
 
 
-/* 
-        A mettre dans la charge utile
-        "imageUrl": URL.createObjectURL(inpFile.files[0]) 
 
-Authorization: 'Bearer Token'
- */
+
 
  

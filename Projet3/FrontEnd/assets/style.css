@@ -53,10 +53,29 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
+.editeur{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 55px;
+	background-color: black;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.editeur p {
+	margin-left: 5px;
+}
+
+
+
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 90px 0
 }
 section {
 	margin: 50px 0
@@ -401,7 +420,6 @@ article img{
 	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: repeat(3, 130px);
 	gap: 30px 10px;
-
 }
 
 .content-img .article-modale{
@@ -478,7 +496,7 @@ article img{
 
 /*** modale 2 ***/
 .modale2{
-	display: block;
+	display: none;
 }
 
 /* ici #inpFile de type file vient à ne plus bloque la selection avec la touche Tab*/
