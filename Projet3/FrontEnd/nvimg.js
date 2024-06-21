@@ -330,9 +330,9 @@ let nvFile = inpFile.files[0]
 
 
     let nvProjet = new FormData()
-    nvProjet.append("imageUrl", nvFile)
+    nvProjet.append("image", nvFile)
     nvProjet.append("title", inpTitel.value)
-    nvProjet.append("categoryId", selection.value)
+    nvProjet.append("category", selection.value)
 
     console.log(nvFile)
 
