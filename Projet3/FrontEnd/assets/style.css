@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	margin: 0;
 }
 ol, ul {
 	list-style: none;
@@ -53,10 +54,30 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
+.editeur{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 55px;
+	background-color: black;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.editeur p {
+	margin-left: 5px;
+}
+
+
+
 header {
+	
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 90px 0
 }
 section {
 	margin: 50px 0
@@ -95,16 +116,20 @@ nav li {
 	font-size: 1.2em;
 }
 
+nav li:last-child{
+	width: 30px;
+	margin-right: 10px;	
+}
+li img{
+	width: 100%;
+	height: 100%;
+}
 /*** style du lien Login***/
 
 nav a{
 	color: #333;
 	text-decoration: none;
 }
-
-
-
-
 
 
 li:hover {
@@ -179,27 +204,29 @@ li:hover {
 
 /*lien filtre*/
 
-
-
 .gallery {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
-	grid-row-gap: 20px;
+	grid-row-gap: 35px;
+}
+figure figcaption{
+	margin-top: 5px;
 }
 
-.gallery img {
+.gallery img{
 	width: 100%;
-
+	height: 100%;
 }
+
 #contact {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
+
 #contact > * {
 	text-align: center;
-
 }
 #contact h2{
 	margin-bottom: 20px;
@@ -247,8 +274,6 @@ article{
 	height: 100%;
 	margin: 10px;
 }
-
-
 
 article img{
 	width: 100%;
@@ -334,11 +359,6 @@ article img{
 }
 
 
-
-
-
-
-
 /*** modale 1 ***/
 
 .modale{
@@ -359,28 +379,26 @@ article img{
 	left: 50%;
 	transform: translate(-50%,-50%);
 	width: 630px;
-	height: 740px;
+	height: 680px;
 	background-color: #fff;
 	border-radius: 12px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	
 }
-
 
 
 .content-modale1 h3{
-	position: absolute;
+	position: relative;
 	top: 50px;
-	left: 50%;
-	transform: translate(-50%);
-	margin-bottom: 40px;
+	left: 35%;
+	margin-bottom: 90px;
 	font-size: 30px;
-
 }
 
-.btn-modale1{
+.btn-modale1, .btn-modale2{
 	position: absolute;
 	top: 22px;
 	right: 22px;
@@ -388,19 +406,21 @@ article img{
 	outline: none;
 	font-size: 20px;
 	background-color: #fff;
+	cursor: pointer;
 }
 
 .content-img{
-	position: absolute;
-	top: 50%;
+	position: relative;
+	top: 0px;
 	left: 50%;
-	transform: translate(-50%,-50%);
+	transform: translate(-50%);
 	width: 500px;
-	height: 530px;
+	height: 440px;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: repeat(3, 130px);
-	gap: 30px 10px;
+	gap: 20px 10px;
+	overflow: auto;
 
 }
 
@@ -420,16 +440,19 @@ article img{
 
 
 .content-modale1 span{
-	align-self: center;
+	position: absolute;
+	bottom: 100px;
+	left: 50%;
+	transform: translate(-50%);
 	width: 500px;
-	height: 2px;
+	height: 1px;
 	background-color: #B3B3B3
 }
 
-.btn-ajouter, .btn-valider{
-	position: absolute;
-	bottom: 50px;
+.btn-ajouter{
+	position: relative;
 	left: 50%;
+	bottom: 0px;
 	transform: translate(-50%);
 	width: 260px;
 	padding: 15px;
@@ -437,31 +460,33 @@ article img{
 	border-radius: 25px;
 	letter-spacing: 1px;
 	color: #fff;
-	margin-top: 20px;
+	margin: 40px 0px;
 	font-size: 14px;
 	font-family: 'Syne';
+	outline: none;
+	border: none;
+	cursor: pointer;
 }
-
-
 
 .article-modale .span-trash{
 	position: absolute;
 	top: 5px;
-	right: 5px;
+	transform: translate(15px);
 	width: 13px;
 	height: 15px;
 	padding: 5px 7px;
 	background-color: black;
 	border-radius: 4px;
 	transition: all 0.3s;
+	cursor: pointer;
 
 }
 .span-trash:hover{
-	transform: translateY(-2px);
+	transform: translate(15px, -2px);
 }
 
 .span-trash:active{
-	transform: translateY(2px);
+	transform: translate(15px, 2px);
 }
 
 .span-trash img{
@@ -482,11 +507,6 @@ article img{
 }
 
 /* ici #inpFile de type file vient à ne plus bloque la selection avec la touche Tab*/
-#inpFile{
-	z-index: -200;
-}
-
-
 
 .content-modale2{
 	position: relative;
@@ -504,16 +524,39 @@ article img{
 
 }
 
+.content-modale2 h3{
+	position: relative;
+	top: 60px;
+	left: 35%;
+	margin-bottom: 90px;
+	font-size: 30px;
+}
+
 .btn-modale2{
 	position: absolute;
 	top: 22px;
 	right: 22px;
 }
 
+.btn-fleche{
+	position: absolute;
+	top: 21px;
+	left: 21px;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	background-color: #fff;
+	cursor: pointer;
+}
+
 
 .ajout-photo{
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%, -25%);
 	width: 500px;
-	height: 200px;
+	height: 190px;
 	background-color: #E8F1F6;
 	display: flex;
 	justify-content: center;
@@ -524,15 +567,37 @@ article img{
 .boximg{
 	width: 90px;
 	height: 90px;
-
 }
 
 .boximg img{
 	width: 100%;
 	height: 100%;
+
 }
 
-.form-ajouter{
+.btn-img{
+	border: none;
+	outline: none;
+	font-size: 17px;
+	color: #306685;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 20px;
+	width: 200px;
+	background-color: #CBD6DC;
+	cursor: pointer;
+}
+
+.ajout-photo .obj{
+	width: 110px;
+	height: 100%;
+}
+
+#form-ajouter{
+	position: absolute;
+	bottom: 30%;
+	left: 50%;
+	transform: translate(-50%, 30%);
 	width: 500px;
 	height: 200px;
 	display: flex;
@@ -540,17 +605,56 @@ article img{
 	align-items: center;
 	flex-direction: column;
 }
-.form-ajouter label{
-	width: 160px;
-	text-align: start;
+#form-ajouter label{
+	width: 100%;
 	margin: 10px;
 }
 
 
-.ajout-photo .obj{
-	width: 50px;
-	height: 50px;
+#inpTitel, #selection{
+	margin-bottom: 10px;
+	border: none;
+	outline: none;
+	font-size: 15px;
+	width: 465px;
+	padding: 15px 20px;
+	box-shadow: 0px 4px 20px  #33333328;
 
+}
+
+#selection{
+	-webkit-appearance: none; 
+  	-moz-appearance: none;
+	  width: 500px;
+
+}
+
+
+.content-modale2 span{
+	position: absolute;
+	bottom: 0px;
+	left: 50%;
+	transform: translate(-50%);
+	width: 500px;
+	height: 1px;
+	background-color: #B3B3B3
+}
+
+
+.valider{
+	position: relative;
+	bottom: -70px;
+	padding: 10px;
+	background-color: #A7A7A7;
+	border-radius: 30px;
+	letter-spacing: 2px;
+	color: #fff;
+	font-size: 20px;
+	font-family: 'Syne';
+	width: 290px;
+	outline: none;
+	border: none;
+	cursor: pointer;
 }
 
 /*** modale 2 ***/

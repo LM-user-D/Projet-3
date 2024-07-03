@@ -11,7 +11,14 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+
 <header>
+
+	<div class="editeur">
+		<img src="assets/icons/Vector(1).svg" alt="icon d'un crayon">
+		<p>Mode édition</p>
+	</div>
+	
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
@@ -26,7 +33,7 @@
 <main>
 	<section id="introduction">
 		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
+			<img src="./assets/images/sophie-bluel.png" alt="photo de Sophie Bluel">
 		</figure>
 		<article>
 			<h2>Designer d'espace</h2>
@@ -37,11 +44,10 @@
 	</section>
 	<section id="portfolio">
 		
-
         <!--  lein vers la modale -->
 		<div class="content-lien-modale">
             <h2>Mes Projets</h2>
-            <a href="#" class="lien-modale1"><img src="Vector (1).svg" alt=""> modifier</a>
+            <a href="#" class="lien-modale1"><img src="assets/icons/Vector(2).svg" alt="icon d'un crayon"> modifier</a>
 		</div>
         <!--  lein vers la modale -->
 
@@ -50,11 +56,10 @@
 		<section class="modale modale1" aria-hidden="true" aria-labelledby="titlemodale">
 			<div class="content-modale1">
 		
-				<button class="btn-modale1">X</button>
+				<button class="btn-modale btn-modale1"><img src="assets/icons/VectorCroix.svg" alt="croix pour sortir de la modale"></button>
 				<h3 id="titlemodale">Galerie photo</h3>
 		
 				<div class="content-img">
-				
 				</div>
 				<span></span>
 				<button class="btn-ajouter">Ajouter une photo</button>
@@ -67,43 +72,42 @@
 
 		<section class="modale modale2">
 			<div class="content-modale2">
-		
-				<button class="btn-modale2">X</button>
-				<button class="btn-modale2">fleche</button>
+				<button class="btn-fleche"><img src="assets/icons/VectorArrow.svg" alt="fleche pour revenir à la boite modale précédente"></button>
+
+				<button class="btn-modale btn-modale2"><img src="assets/icons/VectorCroix.svg" alt="croix pour sortir de la modale"></button>
 				<h3>Ajout photo</h3>
 
 				<div class="ajout-photo">
 					
 					<div class="boximg">
-						<img src="Vector.svg" alt="">
+						<img src="assets/icons/Vector.svg" alt="icon landscape">
 					</div>	
 
-					<input type="file" id="inpFile"  name="inpFile">
-					<button class="btn-inp">+ Ajouter photo</button>
+					<button class="btn-img">+ Ajouter photo</button>
 					<p class="size-img">jpn, png: 4mo max</p>
 
 				</div>
 
 		<!---  formulaire -->
-				<form id="form-ajouter" action="submit">
-		
+				<form id="form-ajouter">
+					<input type="file" id="inpFile"  name="inpFile" tabindex="-1">
+
 					<label for="inpTitel">Titre</label>
 					<input type="text" name="titleImg" id="inpTitel">
 
 					<label for="selection">Catégorie</label>
-					<select class="selection" id="selection" name="select">
-						<option value="Objets">Objets</option>
-						<option value="Appartements">Appartement</option>
-						<option value="Hotel & restaurants">Hôtel & restaurants</option>
+					<select id="selection">
+						<option value=""></option>
+						<option value="1">Objets</option>
+						<option value="2">Appartement</option>
+						<option value="3">Hôtel & restaurants</option>
 					</select>
 								
 					<span></span>
-					<input type="submit" value="Valider">
-
-					<button  class="btn-valider">Valider</button>
+					
+					<button type="submit" class="valider">Valider</button>
 				</form>
 		<!---  formulaire -->
-			
 			</div>
 		
 		</section>
@@ -113,50 +117,7 @@
 		<!---  modale 2-->
 
 		<div class="gallery">
-			<figure>
-				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-				<figcaption>Abajour Tahina</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
-				<figcaption>Appartement Paris V</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
-				<figcaption>Restaurant Sushisen - Londres</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
-				<figcaption>Villa “La Balisiere” - Port Louis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
-				<figcaption>Structures Thermopolis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
-				<figcaption>Appartement Paris X</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
-				<figcaption>Pavillon “Le coteau” - Cassis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
-				<figcaption>Villa Ferneze - Isola d’Elba</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
-				<figcaption>Appartement Paris XVIII</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
-				<figcaption>Bar “Lullaby” - Paris</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
-				<figcaption>Hotel First Arte - New Delhi</figcaption>
-			</figure>
+		
 		</div>
 	</section>
 
@@ -183,6 +144,6 @@
 		</ul>
 	</nav>
 </footer>
-<script src="nvimg.js"></script>
+<script src="dossierJS/nvimg.js"></script>
 </body>
 </html>

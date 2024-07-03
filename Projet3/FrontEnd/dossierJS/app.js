@@ -1,4 +1,3 @@
-
 const gallery = document.querySelector('.gallery')
 const objets = document.querySelector('.objets')
 const appart = document.querySelector('.appartements')
@@ -9,23 +8,44 @@ async function reponseProjet(){
     return await fetch("http://localhost:5678/api/works").then(reponse => reponse.json())
 }
 
-
 reponseProjet().then(donnees =>{
         
         let data = donnees
+
+    function allProjects(){
+
+        for(let i = 0; i < data.length; i++){
+
+            let imgProjet = document.createElement('img');
+            let titleProjet = document.createElement('figcaption');
+            let figureProjet = document.createElement('figure');
+
+            imgProjet.src = data[i].imageUrl;
+            titleProjet.innerText = data[i].title;
+
+            figureProjet.appendChild(imgProjet);
+            figureProjet.appendChild(titleProjet);
+
+            gallery.appendChild(figureProjet)
+
+        }
+        
+    }
+    allProjects()
+
 
         tousLesProjets.addEventListener('click', ()=>{
             function allPhotos (){
                 for(let i = 0; i < data.length; i++){
                 let image = document.createElement('img');
-                let title = document.createElement('figcaption');
+                let titleimg = document.createElement('figcaption');
                 let figure = document.createElement('figure');
 
                 image.src = data[i].imageUrl;
-                title.innerText = data[i].title;
+                titleimg.innerText = data[i].title;
 
                 figure.appendChild(image);
-                figure.appendChild(title);
+                figure.appendChild(titleimg);
                 gallery.appendChild(figure);
             
                 }
@@ -42,7 +62,7 @@ reponseProjet().then(donnees =>{
             function appelObj(){ 
 
                 const imgObj = data.filter(function (dt){
-                    return dt.category.name == 'Objets';
+                    return dt.category.id === 1;
                 })   
 
                 for(let i = 0; i < imgObj.length; i++){
@@ -58,7 +78,6 @@ reponseProjet().then(donnees =>{
                     figure.appendChild(titleImg)
                     
                     gallery.appendChild(figure)
-
                 }     
 
             }
@@ -73,24 +92,22 @@ reponseProjet().then(donnees =>{
             function appelAppart(){      
 
                 const appartValue = data.filter(function(dt){
-                  
-                   return dt.category.name == 'Appartements'
+                   return dt.category.id === 2
                 })
             
                 for(let i = 0; i < appartValue.length; i++){
                         let image = document.createElement('img')
-                        let titleAppart = document.createElement('figcaption')
+                        let titleimg = document.createElement('figcaption')
                         let figure = document.createElement('figure')
 
                         image.src = appartValue[i].imageUrl
-                        titleAppart.innerText = appartValue[i].title
+                        titleimg.innerText = appartValue[i].title
 
                         figure.appendChild(image)
-                        figure.appendChild(titleAppart)
+                        figure.appendChild(titleimg)
 
                         gallery.appendChild(figure)
                         console.log(gallery)
-
                 }
 
                 }      
@@ -99,27 +116,26 @@ reponseProjet().then(donnees =>{
             }
             
         )
-
-
+        
         hotel.addEventListener('click', ()=>{
             function HotelAndRestaurant (){
                 const resto = data.filter(function(dt){
-                    return dt.category.name == "Hotels & restaurants"
+                    return dt.category.id == 3
                 })
 
                 for(let i = 0; i < resto.length; i++){
 
-                    image = document.createElement('img')
-                    titleResto = document.createElement('figcaption')
-                    figure = document.createElement('figure')
+                    let  image = document.createElement('img')
+                    let  titleResto = document.createElement('figcaption')
+                    let  figure = document.createElement('figure')
 
-                    image.src = resto[i].imageUrl
-                    titleResto.innerText = resto[i].title
+                        image.src = resto[i].imageUrl
+                        titleResto.innerText = resto[i].title
 
-                    figure.appendChild(image)
-                    figure.appendChild(titleResto)
+                        figure.appendChild(image)
+                        figure.appendChild(titleResto)
 
-                    gallery.appendChild(figure)
+                        gallery.appendChild(figure)
                     
                 }
                 
@@ -129,9 +145,9 @@ reponseProjet().then(donnees =>{
              HotelAndRestaurant()
         })
 
+
 })
    
-/*** partie avec la méthode POST******/
 
 
 

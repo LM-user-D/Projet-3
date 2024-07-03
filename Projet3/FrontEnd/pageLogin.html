@@ -11,13 +11,13 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-<header>
+<header style="margin: 40px 0px;">
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li>login</li>
+			<li style="font-weight: 800;">login</li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -34,16 +34,14 @@
             <input type="email" id="email" name="email">
 
             <label for="password">Mot de passe </label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" autocomplete="on"> <!--autocomplete="on" vu sur le site stackoverflow poure resoudre le souci dans la console-->
 
-            <input type="submit" value="Se connecter">
+            <input id="connetion" type="submit" value="Se connecter">
             </form>
 
             <a href="#">Mot de passe oublié</a>
 
         </section>
-        <button class="click">click</button>
-
     </main>
     <footer>
         <nav>
@@ -55,6 +53,6 @@
     
 
 
-<script src="login.js"></script>
+<script src="dossierJS/login.js"></script>
 </body>
 </html>
