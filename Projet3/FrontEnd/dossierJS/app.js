@@ -107,7 +107,6 @@ reponseProjet().then(donnees =>{
                         figure.appendChild(titleimg)
 
                         gallery.appendChild(figure)
-                        console.log(gallery)
                 }
 
                 }      

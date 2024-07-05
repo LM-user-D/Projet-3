@@ -98,8 +98,6 @@ function gestionClickModale () {
             index = 0
         }
         focussables2[index].focus()
-
-        console.log(focussables2, index)
     }
 
 
@@ -288,10 +286,7 @@ let nvFile = inpFile.files[0]
     nvProjet.append("title", inpTitel.value)
     nvProjet.append("category", selection.value)
 
-    console.log(nvFile)
-
     const token = localStorage.getItem('token')
-    console.log(token)
  
     const request = await fetch("http://localhost:5678/api/works", 
         {
@@ -299,10 +294,8 @@ let nvFile = inpFile.files[0]
             headers: {"Authorization": "Bearer " + token},
             body: nvProjet
     })
-    
-    let reponse = await request.json()
-        console.log(reponse)
- 
+        await request.json()
+
 }, false)
 
 
